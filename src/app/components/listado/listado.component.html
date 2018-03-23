@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="header">
+    <div class="header__top">
+      <h1>Infotech</h1>
+    </div>
+    <div class="header__bottom">
+      Lista de usuarios
+    </div>
+  </div>
+  <div class="listado">
+    <div class="listado__mobile" *ngFor="let user of usuarios; let i=index">
+      <div class="user-name" (click)="showCard(i)">
+          <div>{{i+1}}</div>
+          <div>{{user.name}}</div>
+          <div class="btn-show" *ngIf="!card">+</div>
+          <div class="btn-show" *ngIf="card && (numero===i)">-</div>
+      </div>
+      <div [ngClass]="{collapse:card && (numero===i)}" class="user-card">
+          <div>
+              <p class="user-item"><span class="user-item__name">Usuario: </span>{{user.username}}</p>
+              <p class="user-item"><span class="user-item__name">Email: </span>{{user.email}}</p>
+              <p class="user-item"><span class="user-item__name">Telefono: </span>{{user.phone}}</p>
+              <p class="user-item"><span class="user-item__name">Web: </span>{{user.website}}</p>
+          </div>
+          <div>
+              <p class="user-item"><span class="user-item__name">Empresa: </span></p>
+              <p class="user-subitem"><span class="user-subitem__name">Nombre:</span>{{user.company.name}}</p>
+              <p class="user-subitem"><span class="user-subitem__name">Frase:</span>{{user.company.catchPhrase}}</p>
+              <p class="user-item"><span class="user-item__name">Dirección: </span></p>
+              <p class="user-subitem"><span class="user-subitem__name">Cuidad: </span>{{user.address.city}}</p>
+              <p class="user-subitem"><span class="user-subitem__name">Calle: </span>{{user.address.street}}</p>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
